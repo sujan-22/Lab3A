@@ -30,10 +30,19 @@ namespace Lab3A
 
         public string Decrypt()
         {
-            // Implement decryption logic (e.g., ROT13) for the encrypted Summary
-            // Return the decrypted Summary
-            // You can implement ROT13 or any other decryption method here
-            return "DecryptedSummary";
+            char[] summaryChars = Summary.ToCharArray();
+
+            for (int i = 0; i < summaryChars.Length; i++)
+            {
+                char c = summaryChars[i];
+                if (char.IsLetter(c))
+                {
+                    char baseChar = char.IsUpper(c) ? 'A' : 'a';
+                    summaryChars[i] = (char)((c - baseChar + 13) % 26 + baseChar);
+                }
+            }
+
+            return new string(summaryChars);
         }
     }
 
