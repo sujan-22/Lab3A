@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3A
 {
-    public class Song : Media, IEncryptable
+    public class Song : Media, IEncryptable, ISearchable
     {
         public string Album { get; protected set; }
         public string Artist { get; protected set; }
@@ -20,36 +20,23 @@ namespace Lab3A
 
         public string Encrypt()
         {
-            // Encrypt the Album and Artist using LINQ
-            string encryptedAlbum = new string(Album.Select(EncryptCharacter).ToArray());
-            string encryptedArtist = new string(Artist.Select(EncryptCharacter).ToArray());
-
-            // Return the encrypted Song information
-            return $"{Title} ({Year}) - Album: {encryptedAlbum}, Artist: {encryptedArtist}";
+            throw new NotImplementedException();
         }
 
         public string Decrypt()
         {
-            // Decrypt the Album and Artist using LINQ
-            string decryptedAlbum = new string(Album.Select(DecryptCharacter).ToArray());
-            string decryptedArtist = new string(Artist.Select(DecryptCharacter).ToArray());
-
-            // Return the decrypted Song information
-            return $"{Title} ({Year}) - Album: {decryptedAlbum}, Artist: {decryptedArtist}";
+            throw new NotImplementedException();
         }
 
-        // Helper method to encrypt a character (you can define your own encryption logic here)
-        private char EncryptCharacter(char c)
+        public new bool Search(string key)
         {
-            // Example: Shift each character by 1
-            return (char)(c + 1);
+            return Title.IndexOf(key, StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
-        // Helper method to decrypt a character (you can define your own decryption logic here)
-        private char DecryptCharacter(char c)
+        public override string ToString()
         {
-            // Example: Shift each character back by 1
-            return (char)(c - 1);
+            string toString = ($"Song Title: {Title} ({Year}) \nAlbum: {Album}, Artist: {Artist}");
+            return toString;
         }
     }
 }

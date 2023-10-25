@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab3A
 {
-    public class Book : Media, IEncryptable
+    public class Book : Media, IEncryptable, ISearchable
     {
         public string Author { get; protected set; }
         public string Summary { get; protected set; }
@@ -43,6 +43,18 @@ namespace Lab3A
             }
 
             return new string(summaryChars);
+        }
+
+        public new bool Search(string key)
+        {
+            return Title.IndexOf(key, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+
+        public override string ToString()
+        {
+            string toString = ($"Book Title: {Title} ({Year}) \nAuthor: {Author}");
+            return toString;
         }
     }
 

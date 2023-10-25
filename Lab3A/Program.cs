@@ -122,101 +122,153 @@ namespace Lab3A
                 string menu =
 $@"
 ------------------------------------------|
-                Menu                      |
+             Media Collection             |
 ------------------------------------------|
 1) List All Books                         |
 2) List All Movies                        |  
 3) List All Songs                         |
 4) List All Media                         |
 5) Search All Media by Title              |
+                                          |
+                                          |
 6) Exit                                   |
 ------------------------------------------|
 Enter your choice: ";
 
                 // Display the menu to the user
                 Console.Write(menu);
-                // variable to store the user's choice
-                int choice = int.Parse(Console.ReadLine());
-                switch (choice)
+
+                try
                 {
-                    case 1:
-                        // List all books
-                        var books = mediaCollection.OfType<Book>();
-                        Console.WriteLine(new string('~', 50));
-                        Console.WriteLine("List of All Books:");
-                        Console.WriteLine(new string('=', 50));
-                        foreach (var book in books)
-                        {
-                            Console.WriteLine($"Book Title: {book.Title} ({book.Year})");
-                            Console.WriteLine($"Author: {book.Author}");
+                    // variable to store the user's choice
+                    int choice = int.Parse(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+
+                            // List all books
+                            var books = mediaCollection.OfType<Book>();
                             Console.WriteLine(new string('~', 50));
-                            
-                        }
-                        Console.Write("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                            Console.WriteLine("List of All Books:");
+                            Console.WriteLine(new string('=', 50));
+                            foreach (var book in books)
+                            {
+                                Console.WriteLine(book.ToString());
+                                Console.WriteLine(new string('~', 50));
 
-                    case 2:
-                        // List all movies
-                        var movies = mediaCollection.OfType<Movie>();
-                        Console.WriteLine(new string('~', 50));
-                        Console.WriteLine("List of All Movies:");
-                        Console.WriteLine(new string('~', 50));
-                        foreach (var movie in movies)
-                        {
-                            Console.WriteLine($"Title: {movie.Title} ({movie.Year})");
-                            Console.WriteLine($"Director: {movie.Director}");
-                            Console.WriteLine(new string('-', 50));
-                            //string decryptedSummary = movie.Decrypt();
-                            //Console.WriteLine($"Decrypted Summary: {decryptedSummary}");
-                        }
-                        Console.Write("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                            }
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
 
-                    case 3:
-                        // List all songs
-                        var songs = mediaCollection.OfType<Song>();
-                        Console.WriteLine(new string('~', 50));
-                        Console.WriteLine("List of All Songs:");
-                        Console.WriteLine(new string('~', 50));
-                        foreach (var song in songs)
-                        {
-                            Console.WriteLine($"Title: {song.Title} ({song.Year})"); 
-                            Console.WriteLine($"Album: {song.Album}, Artist: {song.Artist}");
-                            Console.WriteLine(new string('-', 50));
-                            
-                        }
-                        Console.Write("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                        case 2:
 
-                    case 4:
-                        // List all media
-                        foreach(var media in mediaCollection)
-                        {
-                            Console.WriteLine(media);
-                        }
-                        Console.Write("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                            // List all movies
+                            var movies = mediaCollection.OfType<Movie>();
+                            Console.WriteLine(new string('~', 50));
+                            Console.WriteLine("List of All Movies:");
+                            Console.WriteLine(new string('~', 50));
+                            foreach (var movie in movies)
+                            {
+                                Console.WriteLine(movie.ToString());
+                                Console.WriteLine(new string('-', 50));
 
-                    case 5:
-                        // Search media by title
-                        Console.Write("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                                //string decryptedSummary = movie.Decrypt();
+                                //Console.WriteLine($"Decrypted Summary: {decryptedSummary}");
+                            }
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
 
-                    case 6:
-                        Console.WriteLine("Bye!!");
-                        exit = true;
-                        Thread.Sleep(2000);
-                        break;
+                        case 3:
 
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
+                            // List all songs
+                            var songs = mediaCollection.OfType<Song>();
+                            Console.WriteLine(new string('~', 50));
+                            Console.WriteLine("List of All Songs:");
+                            Console.WriteLine(new string('~', 50));
+                            foreach (var song in songs)
+                            {
+                                Console.WriteLine(song.ToString());
+                                Console.WriteLine(new string('-', 50));
+
+                            }
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+
+                        case 4:
+
+                            // List all media
+                            foreach (var media in mediaCollection)
+                            {
+                                Console.WriteLine(media);
+                            }
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+
+                        case 5:
+                            Console.Write("Enter the title to search for: ");
+                            string searchKey = Console.ReadLine().Trim();
+                            Console.WriteLine(new string('~', 50));
+                            Console.WriteLine($"Matching media items for '{searchKey}':");
+                            Console.WriteLine(new string('=', 50));
+                            Thread.Sleep(1000);
+
+                            bool foundMatches = false;
+
+                            foreach (var media in mediaCollection)
+                            {
+                                if (media.Search(searchKey))
+                                {
+                                    Console.WriteLine(media.ToString());
+                                    Console.WriteLine();
+
+                                    if (media is Movie movie)
+                                    {
+                                        foundMatches = true;
+                                        Console.WriteLine($"Decrypted Summary: {movie.Decrypt()}");
+                                        Console.WriteLine(new string('-', 50));
+
+                                    } else if (media is Book book)
+                                    {
+                                        foundMatches = true;
+                                        Console.WriteLine($"Decrypted Summary: {book.Decrypt()}");
+                                        Console.WriteLine(new string('-', 50));
+                                    }
+                                } 
+                            }
+
+                            if(!foundMatches)
+                            {
+                                Console.WriteLine("Could not find matching results!");
+                            }
+
+                            Console.Write("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+
+
+
+                        case 6:
+
+                            Console.WriteLine("Bye!!");
+                            exit = true;
+                            Thread.Sleep(2000);
+                            break;
+
+                        default:
+
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                } catch (Exception ex) 
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Invalid input. Please enter a valid choice.");
                 }
+                
             }
         }
     }
