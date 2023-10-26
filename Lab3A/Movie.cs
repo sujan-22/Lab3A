@@ -51,8 +51,7 @@ namespace Lab3A
 
         public override string ToString()
         {
-            string toString = ($"Movie Title: {Title} ({Year}) \nDirector: {Director} ");
-            return toString;
+            return ($"Movie Title: {Title} ({Year}) \nDirector: {Director} ");
         }
 
 

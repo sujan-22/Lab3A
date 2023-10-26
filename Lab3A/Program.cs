@@ -150,11 +150,12 @@ Enter your choice: ";
                             var books = mediaCollection.OfType<Book>();
                             Console.WriteLine(new string('~', 50));
                             Console.WriteLine("List of All Books:");
-                            Console.WriteLine(new string('=', 50));
+                            Console.WriteLine(new string('~', 50));
+
                             foreach (var book in books)
                             {
                                 Console.WriteLine(book.ToString());
-                                Console.WriteLine(new string('~', 50));
+                                Console.WriteLine(new string('-', 50));
 
                             }
                             Console.Write("Press any key to continue...");
@@ -168,6 +169,7 @@ Enter your choice: ";
                             Console.WriteLine(new string('~', 50));
                             Console.WriteLine("List of All Movies:");
                             Console.WriteLine(new string('~', 50));
+
                             foreach (var movie in movies)
                             {
                                 Console.WriteLine(movie.ToString());
@@ -187,6 +189,7 @@ Enter your choice: ";
                             Console.WriteLine(new string('~', 50));
                             Console.WriteLine("List of All Songs:");
                             Console.WriteLine(new string('~', 50));
+
                             foreach (var song in songs)
                             {
                                 Console.WriteLine(song.ToString());
@@ -202,7 +205,7 @@ Enter your choice: ";
                             // List all media
                             foreach (var media in mediaCollection)
                             {
-                                Console.WriteLine(media);
+                                Console.WriteLine(media.ToString());
                             }
                             Console.Write("Press any key to continue...");
                             Console.ReadKey();
@@ -213,7 +216,7 @@ Enter your choice: ";
                             string searchKey = Console.ReadLine().Trim();
                             Console.WriteLine(new string('~', 50));
                             Console.WriteLine($"Matching media items for '{searchKey}':");
-                            Console.WriteLine(new string('=', 50));
+                            Console.WriteLine(new string('~', 50));
                             Thread.Sleep(1000);
 
                             bool foundMatches = false;

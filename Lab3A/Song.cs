@@ -35,8 +35,7 @@ namespace Lab3A
 
         public override string ToString()
         {
-            string toString = ($"Song Title: {Title} ({Year}) \nAlbum: {Album}, Artist: {Artist}");
-            return toString;
+            return ($"Song Title: {Title} ({Year}) \nAlbum: {Album}, Artist: {Artist}");
         }
     }
 }

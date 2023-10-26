@@ -53,8 +53,7 @@ namespace Lab3A
 
         public override string ToString()
         {
-            string toString = ($"Book Title: {Title} ({Year}) \nAuthor: {Author}");
-            return toString;
+            return ($"Book Title: {Title} ({Year}) \nAuthor: {Author}");
         }
     }
 
