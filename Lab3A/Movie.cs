@@ -1,4 +1,22 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
+﻿/*
+  Class:           Movie.cs
+  Author:          Sujan Rokad
+  Student number:  000882948
+  Date:            October 30, 2023
+
+  Purpose:         This interface has one method that classes making use of must
+                   implement. 
+
+*/
+
+/// <summary>
+/// The class implementing the Search() method will be assumed to
+/// use a string search key as a parameter and return a boolean
+/// value to indicate if that key was successfully found.
+/// </summary>
+/// 
+
+using DocumentFormat.OpenXml.Bibliography;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,14 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
+﻿/*
+  Class:           Program.cs
+  Author:          Sujan Rokad
+  Student number:  000882948
+  Date:            October 30, 2023
+
+  Purpose:         This C# program is designed to manage and interact with a collection of media items, including songs,                  movies, and books. It reads data from a file (Data.txt) and provides users with a menu-driven console                  interface to list, search, and view details of the media items.
+
+*/
+
+using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Office2013.Excel;
 using System;
@@ -14,8 +24,9 @@ namespace Lab3A
     public class Program
     {
         private static List<Media> mediaCollection = new List<Media>();
+
         // Read and store data from Data.txt
-        public void Read(string filePath)
+        public static void Read(string filePath)
         {
             try
             {
@@ -107,12 +118,9 @@ namespace Lab3A
 
 
         static void Main(string[] args)
-        {   
-            // Create an instance of the Program class
-            Program lab = new Program();
-
+        {  
             // Read employee data from the CSV file
-            lab.Read("Data.txt");
+            Read("Data.txt");
 
             // Display a menu and implement user interaction
             bool exit = false;
