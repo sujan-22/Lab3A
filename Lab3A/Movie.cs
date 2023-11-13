@@ -3,6 +3,7 @@
   Author:          Sujan Rokad
   Student number:  000882948
   Date:            October 30, 2023
+  Authorship:      I, Sujan Rokad, 000882948 certify that this material is my original work.  No other person's work has been used without due acknowledgement.
 
   Purpose:         This class represents a movie as a type of media and implements the IEncryptable and ISearchable interfaces. It provides properties to store information about the movie, such as its title, release year, director, and summary.
 

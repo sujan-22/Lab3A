@@ -3,6 +3,7 @@
   Author:          Sujan Rokad
   Student number:  000882948
   Date:            October 30, 2023
+  Authorship:      I, Sujan Rokad, 000882948 certify that this material is my original work.  No other person's work has been used without due acknowledgement.
 
   Purpose:         This C# program is designed to manage and interact with a collection of media items, including songs, movies, and books. It reads data from a file (Data.txt) and provides users with a menu-driven console interface to list, search, and view details of the media items.
 
